@@ -11,14 +11,22 @@ export async function bootstrap(): Promise<ConfigurationInterface> {
     dotenv.config({ path: envFilePath });
   }
 
-  if(!process.env.HOMEASSISTANT_HOST && !process.env.HOMEASSISTANT_TOKEN) {
+  if(process.env.SUPERVISOR_TOKEN) {
+    return {
+      homeAssistantHost: 'http://supervisor/',
+      homeAssistantToken: process.env.SUPERVISOR_TOKEN,
+      logLevel: LogLevelEnum.WARNING,
+      isDevelopment: process.env.MODE === 'develop',
+    }
+  } else if(!process.env.HOMEASSISTANT_HOST && !process.env.HOMEASSISTANT_TOKEN) {
     throw new Error('No required environment variables');
+  } else {
+    return {
+      homeAssistantHost: process.env.HOMEASSISTANT_HOST,
+      homeAssistantToken: process.env.HOMEASSISTANT_TOKEN,
+      logLevel: LogLevelEnum.WARNING,
+      isDevelopment: process.env.MODE === 'develop',
+    }
   }
 
-  return {
-    homeAssistantHost: process.env.HOMEASSISTANT_HOST,
-    homeAssistantToken: process.env.HOMEASSISTANT_TOKEN,
-    logLevel: LogLevelEnum.WARNING,
-    isDevelopment: process.env.MODE === 'develop',
-  }
 }
