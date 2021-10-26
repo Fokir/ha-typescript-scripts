@@ -14,10 +14,10 @@ export async function bootstrap(): Promise<ConfigurationInterface> {
   if(process.env.SUPERVISOR_TOKEN) {
     console.log(`Detected super token ${process.env.SUPERVISOR_TOKEN}, connect to http://supervisor/`);
     return {
-      homeAssistantHost: 'http://supervisor/',
+      homeAssistantHost: 'http://supervisor/core/websocket',
       homeAssistantToken: process.env.SUPERVISOR_TOKEN,
-      logLevel: LogLevelEnum.WARNING,
-      isDevelopment: process.env.MODE === 'develop',
+      logLevel: LogLevelEnum.INFO,
+      isDevelopment: false,
     }
   } else if(!process.env.HOMEASSISTANT_HOST && !process.env.HOMEASSISTANT_TOKEN) {
     throw new Error('No required environment variables');
