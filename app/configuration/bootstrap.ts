@@ -12,6 +12,7 @@ export async function bootstrap(): Promise<ConfigurationInterface> {
   }
 
   if(process.env.SUPERVISOR_TOKEN) {
+    console.log(`Detected super token ${process.env.SUPERVISOR_TOKEN}, connect to http://supervisor/`);
     return {
       homeAssistantHost: 'http://supervisor/',
       homeAssistantToken: process.env.SUPERVISOR_TOKEN,
