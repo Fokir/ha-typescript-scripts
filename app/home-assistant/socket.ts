@@ -10,7 +10,7 @@ const ERR_CANNOT_CONNECT = 1;
 const ERR_INVALID_AUTH = 2;
 
 export function createSocket(auth: Auth, configuration: ConfigurationInterface): Promise<HaWebSocket> {
-  const url = auth.wsUrl;
+  const url = configuration.homeAssistantHost;
 
   if (configuration.logLevel >= LogLevelEnum.INFO) {
     console.log("[Auth phase] Initializing WebSocket connection to Home Assistant", url);
