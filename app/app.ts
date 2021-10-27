@@ -4,7 +4,9 @@ import { HaConnection } from './home-assistant/haConnection';
 import { drawAvailableServicesWithDomains } from './helpers/draw-available-services-with-domains';
 import { drawAvailableEntities } from './helpers/draw-available-entities';
 import { ScriptConductor } from './scripts/script-conductor';
-import { EntityLog } from './scripts/custom_scripts/entity-log';
+import { EntityLogScript } from './scripts/custom_scripts/entity-log.script';
+import { LightControlScript } from './scripts/custom_scripts/light-control.script';
+import { FanControlScript } from './scripts/custom_scripts/fan-control.script';
 
 console.clear();
 
@@ -19,7 +21,9 @@ bootstrap().then(async (configuration: ConfigurationInterface) => {
 
   const scriptConductor = new ScriptConductor(
     [
-      EntityLog
+      EntityLogScript,
+      LightControlScript,
+      FanControlScript,
     ],
     haConnection
   );

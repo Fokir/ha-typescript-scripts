@@ -33,7 +33,7 @@ export class HaConnection {
       createSocket: async () => createSocket(auth, this.configuration),
     });
 
-    console.log(`Connected to Home Assistant: Host ${ auth.wsUrl }`);
+    console.log(`Connected to Home Assistant: Host ${ this.configuration.homeAssistantHost }`);
   }
 
   public subscribeEntities(): Observable<HassEntities> {
