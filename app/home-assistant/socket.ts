@@ -13,7 +13,7 @@ export function createSocket(auth: Auth, configuration: ConfigurationInterface):
   const url = configuration.homeAssistantHost;
 
   if (configuration.logLevel >= LogLevelEnum.INFO) {
-    console.log("[Auth phase] Initializing WebSocket connection to Home Assistant", url);
+    console.log("[Auth phase] Initializing WebSocket connection to Home Assistant".cyan, url);
   }
 
   function connect(
@@ -23,7 +23,7 @@ export function createSocket(auth: Auth, configuration: ConfigurationInterface):
   ) {
 
     if (configuration.logLevel >= LogLevelEnum.INFO) {
-      console.log(`[Auth Phase] Connecting to Home Assistant... Tries left: ${ triesLeft }`, url);
+      console.log(`[Auth Phase] Connecting to Home Assistant... Tries left: ${ triesLeft }`.red, url);
     }
 
     const socket: WebSocket = new WebSocket(url);
@@ -62,7 +62,7 @@ export function createSocket(auth: Auth, configuration: ConfigurationInterface):
     const closeOrError = (errorText?: string) => {
       if (errorText && configuration.logLevel >= LogLevelEnum.ERROR) {
         console.log(
-          `WebSocket Connection to Home Assistant closed with an error: ${ errorText }`
+          `WebSocket Connection to Home Assistant closed with an error: ${ errorText }`.red
         );
       }
       if (invalidAuth) {
@@ -110,7 +110,7 @@ export function createSocket(auth: Auth, configuration: ConfigurationInterface):
 
       if (configuration.logLevel >= LogLevelEnum.INFO) {
         console.log(
-          `[Auth phase] Received a message of type ${ message.type }`,
+          `[Auth phase] Received a message of type ${ message.type }`.cyan,
           message
         );
       }
@@ -132,7 +132,7 @@ export function createSocket(auth: Auth, configuration: ConfigurationInterface):
         default:
           // We already send this message when socket opens
           if (message.type !== MSG_TYPE_AUTH_REQUIRED && configuration.logLevel >= LogLevelEnum.WARNING) {
-            console.log("[Auth phase] Unhandled message", message);
+            console.log("[Auth phase] Unhandled message".red, message);
           }
       }
     };

@@ -7,6 +7,7 @@ import { ScriptConductor } from './scripts/script-conductor';
 import { EntityLogScript } from './scripts/custom_scripts/entity-log.script';
 import { LightControlScript } from './scripts/custom_scripts/light-control.script';
 import { FanControlScript } from './scripts/custom_scripts/fan-control.script';
+import 'colors';
 
 console.clear();
 

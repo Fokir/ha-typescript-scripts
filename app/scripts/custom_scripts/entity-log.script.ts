@@ -6,7 +6,7 @@ export class EntityLogScript extends ScriptManager {
     this.subscribeEntitiesStateUpdate().pipe(
       takeUntil(this.destroy$)
     ).subscribe((entity) => {
-      console.log(`Entity "${entity.entity_id}" updated, new state ${entity.state}, userId: ${ entity.context?.user_id }`);
+      console.log(`Entity "${entity.entity_id}" updated, new state ${entity.state}, userId: ${ entity.context?.user_id }`.cyan);
     })
   }
 }
