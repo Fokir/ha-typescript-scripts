@@ -1,12 +1,14 @@
 {
   "compilerOptions": {
+    "outDir": "./dist",
     "module": "commonjs",
     "target": "es5",
     "sourceMap": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "lib": [
-      "ES2020"
+      "ES2020",
+      "DOM"
     ]
   },
   "exclude": [
