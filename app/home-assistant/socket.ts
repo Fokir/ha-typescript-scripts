@@ -13,7 +13,7 @@ export function createSocket(auth: Auth, configuration: ConfigurationInterface):
   const url = configuration.homeAssistantHost;
 
   if (configuration.logLevel >= LogLevelEnum.INFO) {
-    console.log("[Auth phase] Initializing WebSocket connection to Home Assistant".cyan, url);
+    console.info("[Auth phase] Initializing WebSocket connection to Home Assistant".cyan, url);
   }
 
   function connect(
@@ -23,7 +23,7 @@ export function createSocket(auth: Auth, configuration: ConfigurationInterface):
   ) {
 
     if (configuration.logLevel >= LogLevelEnum.INFO) {
-      console.log(`[Auth Phase] Connecting to Home Assistant... Tries left: ${ triesLeft }`.red, url);
+      console.info(`[Auth Phase] Connecting to Home Assistant... Tries left: ${ triesLeft }`.red, url);
     }
 
     const socket: WebSocket = new WebSocket(url);
@@ -61,7 +61,7 @@ export function createSocket(auth: Auth, configuration: ConfigurationInterface):
 
     const closeOrError = (errorText?: string) => {
       if (errorText && configuration.logLevel >= LogLevelEnum.ERROR) {
-        console.log(
+        console.error(
           `WebSocket Connection to Home Assistant closed with an error: ${ errorText }`.red
         );
       }
@@ -109,7 +109,7 @@ export function createSocket(auth: Auth, configuration: ConfigurationInterface):
       const message = JSON.parse(event.data);
 
       if (configuration.logLevel >= LogLevelEnum.INFO) {
-        console.log(
+        console.info(
           `[Auth phase] Received a message of type ${ message.type }`.cyan,
           message
         );
@@ -132,7 +132,7 @@ export function createSocket(auth: Auth, configuration: ConfigurationInterface):
         default:
           // We already send this message when socket opens
           if (message.type !== MSG_TYPE_AUTH_REQUIRED && configuration.logLevel >= LogLevelEnum.WARNING) {
-            console.log("[Auth phase] Unhandled message".red, message);
+            console.warn("[Auth phase] Unhandled message".red, message);
           }
       }
     };

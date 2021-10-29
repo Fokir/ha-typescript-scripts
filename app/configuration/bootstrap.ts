@@ -12,7 +12,7 @@ export async function bootstrap(): Promise<ConfigurationInterface> {
   }
 
   if(process.env.SUPERVISOR_TOKEN) {
-    console.log(`Detected super token ${process.env.SUPERVISOR_TOKEN}, connect to http://supervisor/`.green);
+    console.info(`Detected super token ${process.env.SUPERVISOR_TOKEN}, connect to http://supervisor/`.green);
     return {
       homeAssistantHost: 'ws://supervisor/core/websocket',
       homeAssistantToken: process.env.SUPERVISOR_TOKEN,
