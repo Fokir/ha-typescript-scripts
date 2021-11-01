@@ -22,7 +22,7 @@ bootstrap().then(async (configuration: ConfigurationInterface) => {
 
   const scriptConductor = new ScriptConductor(
     [
-      EntityLogScript,
+      // EntityLogScript,
       LightControlScript,
       FanControlScript,
     ],
