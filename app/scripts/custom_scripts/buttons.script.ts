@@ -1,13 +1,13 @@
 import { ScriptManager } from '../script-manager';
 import { EntityIdEnum } from './enum/entityId.enum';
-import { debounceTime, filter, map, takeUntil } from 'rxjs';
+import { debounceTime, distinctUntilChanged, filter, map, takeUntil, tap } from 'rxjs';
 
 export class ButtonsScript extends ScriptManager {
   async run(): Promise<void> {
     this.getEntityState$(EntityIdEnum.ZalButton).pipe(
-      map(entity => entity.state),
-      filter(state => state && state !== 'None'),
-      debounceTime(100),
+      map(entity => entity.attributes.action),
+      distinctUntilChanged(),
+      filter(Boolean),
       takeUntil(this.destroy$)
     ).subscribe(async state => {
       if(state === 'single') {
