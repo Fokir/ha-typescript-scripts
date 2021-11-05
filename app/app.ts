@@ -10,6 +10,7 @@ import { FanControlScript } from './scripts/custom_scripts/fan-control.script';
 import 'colors';
 import { WaterLeakScript } from './scripts/custom_scripts/water-leak.script';
 import { MotionLightScript } from './scripts/custom_scripts/motion-light.script';
+import { ButtonsScript } from './scripts/custom_scripts/buttons.script';
 
 console.clear();
 
@@ -29,6 +30,7 @@ bootstrap().then(async (configuration: ConfigurationInterface) => {
       FanControlScript,
       WaterLeakScript,
       MotionLightScript,
+      ButtonsScript,
     ],
     haConnection
   );

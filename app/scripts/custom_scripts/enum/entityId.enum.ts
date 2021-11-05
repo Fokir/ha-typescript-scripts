@@ -11,4 +11,10 @@ export enum EntityIdEnum {
   // Коридор
   KoridorMotion = 'binary_sensor.motion_koridor_occupancy',
   KoridorLight = 'switch.koridor_light',
+
+  // Зал
+  ZalButton = 'sensor.button_zal_action',
+  ZalLineLight = 'switch.zal_line_light',
+  ZalCompLight = 'switch.zal_comp_light',
+  ZalDivanLight = '  switch.zal_divan_light',
 }
