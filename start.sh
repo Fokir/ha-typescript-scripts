@@ -20,4 +20,5 @@ else
     echo "Unknown status"
 fi
 
+export NODE_ENV="production"
 npm run start
