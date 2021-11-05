@@ -8,6 +8,8 @@ import { EntityLogScript } from './scripts/custom_scripts/entity-log.script';
 import { LightControlScript } from './scripts/custom_scripts/light-control.script';
 import { FanControlScript } from './scripts/custom_scripts/fan-control.script';
 import 'colors';
+import { WaterLeakScript } from './scripts/custom_scripts/water-leak.script';
+import { MotionLightScript } from './scripts/custom_scripts/motion-light.script';
 
 console.clear();
 
@@ -25,6 +27,8 @@ bootstrap().then(async (configuration: ConfigurationInterface) => {
       // EntityLogScript,
       LightControlScript,
       FanControlScript,
+      WaterLeakScript,
+      MotionLightScript,
     ],
     haConnection
   );
