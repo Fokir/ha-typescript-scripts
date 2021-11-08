@@ -26,11 +26,11 @@ bootstrap().then(async (configuration: ConfigurationInterface) => {
   const scriptConductor = new ScriptConductor(
     [
       // EntityLogScript,
-      LightControlScript,
-      FanControlScript,
-      WaterLeakScript,
-      MotionLightScript,
-      ButtonsScript,
+      // LightControlScript,
+      // FanControlScript,
+      // WaterLeakScript,
+      // MotionLightScript,
+      // ButtonsScript,
     ],
     haConnection
   );

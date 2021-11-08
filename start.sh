@@ -13,6 +13,7 @@ if [ $LOCAL = $REMOTE ]; then
    echo "Latest files in repository"
 elif [ $LOCAL = $BASE ]; then
    echo 'Start updated files from git'
+   git reset --hard HEAD
    git pull
    npm install
    npm run build
